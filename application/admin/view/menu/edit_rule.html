@@ -1,6 +1,6 @@
 {include file="public/head"/}
 <body>
-<div class="content" style="padding:5px;">
+<div class="content" style="padding:5px;width: 600px;">
 	
 	<span class="layui-breadcrumb" style="padding-left: 10px">
   <a href="{:url('admin/menu/index')}">菜单管理</a>
@@ -11,47 +11,38 @@
   <div class="layui-form-item">
     <label class="layui-form-label">菜单名称：</label>
     <div class="layui-input-block">
-      <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{$menu.title}">
+      <input type="text" name="title" required  lay-verify="required" placeholder="" autocomplete="off" class="layui-input" value="{$menu.title}" width="20">
     </div>
   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">选择框</label>
+   <div class="layui-form-item">
+    <label class="layui-form-label">节点：</label>
     <div class="layui-input-block">
-      <select name="city" lay-verify="required">
-        <option value=""></option>
-        <option value="0">北京</option>
-        <option value="1">上海</option>
-        <option value="2">广州</option>
-        <option value="3">深圳</option>
-        <option value="4">杭州</option>
-      </select>
+      <input type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input" value="{$menu.name}" placeholder="模块/控制器/方法"> <span class="help-block m-b-none">如：admin/user/adduser </span>
     </div>
   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">复选框</label>
+   <div class="layui-form-item">
+    <label class="layui-form-label">样式名称：</label>
     <div class="layui-input-block">
-      <input type="checkbox" name="like[write]" title="写作">
-      <input type="checkbox" name="like[read]" title="阅读" checked>
-      <input type="checkbox" name="like[dai]" title="发呆">
-    </div>
+      <input type="text" name="name" required  lay-verify="required" autocomplete="off" class="layui-input" value="{$menu.css}" placeholder="输入样式名称">
+       <span class="help-block m-b-none"> <a href="http://fontawesome.dashgame.com/" target="_black">选择图标</a> 如:fa fa-user</span>
   </div>
   <div class="layui-form-item">
-    <label class="layui-form-label">开关</label>
+    <label class="layui-form-label">状&nbsp;态：</label>
     <div class="layui-input-block">
-      <input type="checkbox" name="switch" lay-skin="switch">
+      <input type="radio" name='status' value="1" title="开启" {if condition="$menu['status'] eq 1 "}checked{/if}/>
+      <input type="radio" name='status' value="0" title="关闭" {if condition="$menu['status'] eq 0 "}checked{/if}/>
     </div>
   </div>
-  <div class="layui-form-item">
-    <label class="layui-form-label">单选框</label>
+<div class="layui-form-item">
+    <label class="layui-form-label">排序：</label>
     <div class="layui-input-block">
-      <input type="radio" name="sex" value="男" title="男">
-      <input type="radio" name="sex" value="女" title="女" checked>
+      <input type="text" name="sort" id="sort" required  lay-verify="required" autocomplete="off" class="layui-input" value="{$menu.sort}" placeholder="输入排序">
     </div>
   </div>
   <div class="layui-form-item">
     <div class="layui-input-block">
       <button class="layui-btn" lay-submit lay-filter="formDemo">立即提交</button>
-      <button type="reset" class="layui-btn layui-btn-primary">重置</button>
+      <button href="javascript:history.go(-1);" class="layui-btn layui-btn-primary">重置</button>
     </div>
   </div>
 </form>
