@@ -1,11 +1,12 @@
 <script type="text/javascript" src="/static/admin/frame/layui/layui.js"></script>
 <script type="text/javascript" src="/static/admin/frame/static/js/vip_comm.js"></script>
 <script type="text/javascript">
-layui.use(['layer','vip_nav'], function () {
+layui.use(['layer','vip_nav','form'], function () {
 
     // 操作对象
     var layer       = layui.layer
         ,vipNav     = layui.vip_nav
+        ,form       = layui.form
         ,$          = layui.jquery;
 
     // 顶部左侧菜单生成 [请求地址,过滤ID,是否展开,携带参数]
