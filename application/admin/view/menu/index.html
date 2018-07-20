@@ -1,0 +1,83 @@
+{include file="public/head"/}
+
+<body>
+<script type="text/javascript" src="/static/admin/frame/layui/layui.js"></script>
+<div style="padding-left: 5px;">
+<table class="layui-table">
+  <colgroup>
+    <col width="150">
+    <col width="200">
+    <col>
+  </colgroup>
+  <thead>
+    <tr>
+      <th width="6%">ID</th>
+                                    <th width="19%">权限名称</th>
+                                    <th width="15%">节点</th>
+                                    <th width="15%">菜单状态</th>
+                                    <th width="18%">添加时间</th>
+                                    <th width="10%">排序</th>
+                                    <th width="15%">操作</th>
+    </tr> 
+  </thead>
+  <tbody>
+    {foreach name="admin_rule" item="v"}
+                                    <tr class="long-td">
+                                        <td>{$v.id}</td>
+                                        <td style='text-align:left;padding-left:{if condition="$v.leftpin neq 0"}{$v.leftpin}px{/if}'>{$v.lefthtml}{$v.title}</td>
+                                        <td>{$v.name}</td>                                  
+                                        <td>
+                                            {if condition="$v.status eq 1"}
+                                                <a class="red" href="javascript:;" onclick="rule_state({$v.id});">
+                                                    <div id="zt{$v.id}"><span class="label label-info">开启</span></div>
+                                                </a>
+                                            {else/}
+                                                <a class="red" href="javascript:;" onclick="rule_state({$v.id});">
+                                                    <div id="zt{$v.id}"><span class="label label-danger">禁用</span></div>
+                                                </a>
+                                            {/if} 
+                                        </td>
+                                        <td>{$v.create_time}</td>
+                                        <td style="padding: 3px">
+                                           <div>
+                                               <input name="{$v.id}" value=" {$v.sort}" width="50%" style="text-align:center;" class="form-control">
+                                           </div>
+                                        </td>                                                             
+                                        <td>                                   
+                                            <a href="{:url('edit_rule',['id'=>$v.id])}" class="layui-btn layui-btn-normal layui-btn-xs">
+                                                <i class="fa fa-paste"></i> 编辑</a>&nbsp;&nbsp;
+                                            <a href="javascript:;" onclick="del_rule({$v.id})" class="layui-btn layui-btn-danger layui-btn-xs">
+                                                <i class="fa fa-trash-o"></i> 删除</a>                                       
+                                        </td>
+                                    </tr>
+                                {/foreach}
+  </tbody>
+</table>
+</div>
+<!-- <table id="demo" lay-filter="test"></table> -->
+ 
+<!-- <script>
+layui.use('table', function(){
+  var table = layui.table;
+  
+  //第一个实例
+  table.render({
+    elem: '#demo'
+    ,height: 315
+    ,url: '{:url('admin/menu/list')}' //数据接口
+    ,page: true //开启分页
+    ,cols: [[ //表头
+      {field: 'id', title: 'ID', width:'6%', sort: true, fixed: 'left'}
+      ,{field: 'title', title: '权限名称', width:'19%'}
+      ,{field: 'name', title: '节点', width:'15%', sort: true}
+      ,{field: 'status', title: '菜单状态', width:'15%'} 
+      ,{field: 'pid', title: '添加时间', width: '18%'}
+      ,{field: 'sort', title: '排序', width: '10%', sort: true}
+      ,{field: 'css', title: '操作', width: '15%', sort: true}
+    ]]
+  });
+  
+});
+</script> -->
+
+</body>
